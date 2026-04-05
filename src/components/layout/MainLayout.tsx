@@ -42,7 +42,7 @@ const MainLayout: React.FC = () => {
             onMouseEnter={e => (e.currentTarget.style.background = '#f8fafc')}
             onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
           >
-            <div style={{ textAlign: 'right', display: 'none', md: 'block' }}>
+            <div style={{ textAlign: 'right' }}>
               <p style={{ fontSize: '13px', fontWeight: 'var(--font-weight-medium)', margin: 0 }}>
                 Welcome, {user?.name || user?.email.split('@')[0]}
               </p>
