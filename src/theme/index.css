@@ -1,0 +1,110 @@
+/* ============================================================
+   ZORVYN DESIGN SYSTEM - MAIN ENTRY (LIGHT MODE WITH DARK SIDEBAR)
+   ============================================================ */
+
+@import './tokens.css';
+@import './components.css';
+@import './utilities.css';
+
+/* ── App Layout ─────────────────────────────────────────── */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  flex: 1;
+  padding: var(--space-8);
+  background: #f1f5f9; /* Soft background as in image */
+}
+
+/* ── Sidebar (Dark Theme as in Image) ──────────────────── */
+.sidebar {
+  width: 280px;
+  background: #2a3e59; /* Deep Navy Blue */
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  z-index: 10;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar-header {
+  padding-bottom: var(--space-10);
+}
+
+.sidebar-logo {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-extrabold);
+  color: #ffffff;
+  letter-spacing: -0.04em;
+}
+
+/* User Info (Removed for Image Match) */
+.sidebar-user {
+  display: none; /* User is now in Top Header based on image */
+}
+
+/* ── Navigation ────────────────────────────────────────── */
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.875rem var(--space-5);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: #bdc8d6;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+}
+
+.nav-item.active {
+  background: rgba(255,255,255,0.15); /* Match the selection look from image */
+  color: #ffffff;
+  box-shadow: inset 3px 0 0 white;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 0.875rem var(--space-5);
+  background: transparent;
+  border: none;
+  color: #bdc8d6;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+/* ── Dashboard Cards & UI ─────────────────────────────── */
+.k-grid {
+  border-radius: var(--radius-md) !important;
+  border: 1px solid var(--color-border-default) !important;
+  box-shadow: var(--shadow-sm);
+}
