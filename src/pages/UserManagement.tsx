@@ -76,17 +76,17 @@ const UserManagement: React.FC = () => {
       <div className="card shadow-md" style={{ background: '#fff', borderRadius: '16px', overflow: 'visible' }}>
         <div style={{ padding: '24px 32px 40px', borderBottom: '1px solid #f1f5f9', display: 'flex', gap: '20px' }}>
           <div style={{ position: 'relative', width: 400 }}>
-             <Search size={18} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
-             <input type="text" placeholder="Search system accounts..." className="form-input" style={{ width: '100%', paddingLeft: 46, background: '#f8fafc' }} value={search} onChange={val => setSearch(val.target.value)} />
+            <Search size={18} style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }} />
+            <input type="text" placeholder="Search system accounts..." className="form-input" style={{ width: '100%', paddingLeft: 46, background: '#f8fafc' }} value={search} onChange={val => setSearch(val.target.value)} />
           </div>
-           <div className="d-flex gap-3">
-             {['all', 'admin', 'analyst', 'viewer'].map(r => (
-               <button key={r} onClick={(btnEvent) => { btnEvent.stopPropagation(); setFilterRole(r); }} style={{
-                 padding: '8px 18px', borderRadius: '8px', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', 
-                 background: filterRole === r ? 'var(--color-brand-primary)' : '#f8fafc',
-                 color: filterRole === r ? '#fff' : '#64748b', border: 'none', cursor: 'pointer'
-               }}>{r}</button>
-             ))}
+          <div className="d-flex gap-3">
+            {['all', 'admin', 'analyst', 'viewer'].map(r => (
+              <button key={r} onClick={(btnEvent) => { btnEvent.stopPropagation(); setFilterRole(r); }} style={{
+                padding: '8px 18px', borderRadius: '8px', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase',
+                background: filterRole === r ? 'var(--color-brand-primary)' : '#f8fafc',
+                color: filterRole === r ? '#fff' : '#64748b', border: 'none', cursor: 'pointer'
+              }}>{r}</button>
+            ))}
           </div>
         </div>
 
@@ -111,8 +111,8 @@ const UserManagement: React.FC = () => {
                       <button onClick={(e) => { e.stopPropagation(); setActiveMenu(activeMenu === u._id ? null : u._id); }} style={iconBtnStyle}><MoreHorizontal size={20} /></button>
                       {activeMenu === u._id && (
                         <div className="dropdown shadow-lg animate-fade-in" style={{ position: 'absolute', right: '40px', top: '10px' }}>
-                           <button className="menu-item" onClick={(e) => { e.stopPropagation(); setEditingUser(u); setForm({ role: u.role }); setIsModalOpen(true); setActiveMenu(null); }}>Permissions</button>
-                           <button className="menu-item danger" onClick={(e) => handleDelete(u._id, e)}>Suspend</button>
+                          <button className="menu-item" onClick={(e) => { e.stopPropagation(); setEditingUser(u); setForm({ role: u.role }); setIsModalOpen(true); setActiveMenu(null); }}>Permissions</button>
+                          <button className="menu-item danger" onClick={(e) => handleDelete(u._id, e)}>Suspend</button>
                         </div>
                       )}
                     </>
@@ -126,14 +126,14 @@ const UserManagement: React.FC = () => {
 
       {isModalOpen && (
         <div style={modalOverlayStyle} onClick={(e) => e.stopPropagation()}>
-           <div className="card shadow-xl animate-fade-in" style={modalContentStyle}>
-              <div className="flex-between mb-10"><h3>Admin Actions</h3><button onClick={() => setIsModalOpen(false)} style={iconBtnStyle}><X size={24} /></button></div>
-              <div className="flex-column gap-6">
-                 <div className="form-group"><label className="form-label d-flex gap-2">Member Email</label><input type="email" className="form-input" value={editingUser?.email || ''} readOnly /></div>
-                 <div className="form-group"><label className="form-label d-flex gap-2"><Shield size={15} /> Change Role</label><select className="form-input" value={form.role} onChange={val => setForm({...form, role: val.target.value})}><option value="ADMIN">System Admin</option><option value="ANALYST">Finance Analyst</option><option value="VIEWER">Guest Viewer</option></select></div>
-                 <button className="btn btn-primary w-full py-4 mt-6" style={{ borderRadius: '12px' }} onClick={() => handleUpdateRole(editingUser._id, form.role)}>Sync Permissions</button>
-              </div>
-           </div>
+          <div className="card shadow-xl animate-fade-in" style={modalContentStyle}>
+            <div className="flex-between mb-10"><h3>Admin Actions</h3><button onClick={() => setIsModalOpen(false)} style={iconBtnStyle}><X size={24} /></button></div>
+            <div className="flex-column gap-6">
+              <div className="form-group"><label className="form-label d-flex gap-2">Member Email</label><input type="email" className="form-input" value={editingUser?.email || ''} readOnly /></div>
+              <div className="form-group"><label className="form-label d-flex gap-2"><Shield size={15} /> Change Role</label><select className="form-input" value={form.role} onChange={val => setForm({ ...form, role: val.target.value })}><option value="ADMIN">System Admin</option><option value="ANALYST">Finance Analyst</option><option value="VIEWER">Guest Viewer</option></select></div>
+              <button className="btn btn-primary w-full py-4 mt-6" style={{ borderRadius: '12px' }} onClick={() => handleUpdateRole(editingUser._id, form.role)}>Sync Permissions</button>
+            </div>
+          </div>
         </div>
       )}
     </div>
